@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(cors())
 
 app.use((req,res,next)=>{
-    res.setHeader("Access-Control-Allow-Origin","*")
+    res.setHeader("Access-Control-Allow-Origin","https://earthmover.netlify.app/")
     next()
 })
 app.get('/',(req,res,next)=>{
