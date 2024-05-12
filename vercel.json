@@ -1,35 +1,15 @@
 {
-    "version": 2,
-    "redirects": [
-        {
-          "source": "/",
-          "destination": "./server.js"
-        },
-        {
-          "source": "/reviews",
-          "destination": "./server.js"
-        }
-      ],
-    "rewrites": [
-        {
-          "source": "/",
-          "destination": "./server.js"
-        },
-        {
-          "source": "/reviews",
-          "destination": "./server.js"
-        }
-      ],
-    "routes": [
-      {
-        "src": "/",
-        "dest": "./server.js",
-        "methods":["GET"]
-      },
-      {
-        "src": "/reviews",
-        "dest": "./server.js",
-        "methods":["GET"]
-      }
-    ]
+  "version": 2,
+  "routes": [
+    {
+      "src": "/",
+      "dest": "./server.js",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/reviews",
+      "dest": "./server.js",
+      "methods": ["GET"]
+    }
+  ]
 }
