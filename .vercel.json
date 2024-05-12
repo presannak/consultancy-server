@@ -6,17 +6,23 @@
         "use": "@vercel/node"
       }
     ],
+    "redirects": [
+        {
+          "source": "/reviews",
+          "destination": "/"
+        }
+      ],
+    "rewrites": [
+        {
+          "source": "/reviews",
+          "destination": "/"
+        }
+      ],
     "routes": [
       {
         "src": "/(.*)",
         "dest": "/",
         "methods":["GET","POST","PUT","PATCH","DELETE","OPTIONS"]
       }
-    ],
-    "redirects": [
-        {
-          "source": "/(.*)",
-          "destination": "./server.js"
-        }
-      ]
+    ]
 }
