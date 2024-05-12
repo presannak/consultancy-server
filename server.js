@@ -23,7 +23,7 @@ const pool = new Pool({
   port: 5432,
 });
 
-app.get('/',(req,res,next)=>{
+app.get('/test',(req,res,next)=>{
   res.status(200),json({
     message:"hello from api"
   })

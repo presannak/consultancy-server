@@ -3,12 +3,12 @@
   "routes": [
     {
       "src": "/",
-      "dest": "server.js",
+      "dest": "/",
       "methods": ["GET"]
     },
     {
       "src": "/reviews",
-      "dest": "server.js",
+      "dest": "/",
       "methods": ["GET"]
     }
   ]
