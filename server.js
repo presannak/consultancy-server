@@ -23,6 +23,12 @@ const pool = new Pool({
   port: 5432,
 });
 
+app.get('/',(req,res,next)=>{
+  res.status(200),json({
+    message:"hello from api"
+  })
+})
+
 app.post('/submit-form', async (req, res) => {
   try {
     const { from_name, user_email, subject, message } = req.body;
