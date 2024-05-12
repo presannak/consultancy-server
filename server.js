@@ -15,7 +15,7 @@ app.use((req,res,next)=>{
     res.setHeader("Access-Control-Allow-Origin","*")
     next()
 })
-app.get('/test',(req,res,next)=>{
+app.get('/',(req,res,next)=>{
   res.status(200),json({
     message:"hello from api"
   })
