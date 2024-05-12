@@ -62,26 +62,26 @@ app.post('/submitTestimonial', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+app.get('/reviews', async (req, res) => {
+  try {
 
-app.get('/reviews', createProxyMiddleware({
-    target: 'http://13.127.129.221:3001/re', // Target URL of your HTTP endpoint
-    changeOrigin: true, // Change the origin of the host header to the target URL
-    secure: false, // Do not verify SSL certificates
-}));
+    const result = await pool.query(
+      'select * from testimonials;'
+    );
+    // console.log(result);
+    const {rows:data} = result;
+    res.status(200).
+    json({
+        message: 'Form data stored successfully',
+        data
+     });
+  } catch (error) {
+    console.error('Error inserting form data:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
-// Add proxy middleware for '/submit-form' endpoint
-app.use('/submit-form', createProxyMiddleware({
-    target: 'http://13.127.129.221:3001', // Target URL of your HTTP endpoint
-    changeOrigin: true, // Change the origin of the host header to the target URL
-    secure: false, // Do not verify SSL certificates
-}));
 
-// Proxy middleware for '/submitTestimonial' endpoint
-app.use('/submitTestimonial', createProxyMiddleware({
-    target: 'http://13.127.129.221:3001', // Target URL of your HTTP endpoint
-    changeOrigin: true, // Change the origin of the host header to the target URL
-    secure: false, // Do not verify SSL certificates
-}));
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
