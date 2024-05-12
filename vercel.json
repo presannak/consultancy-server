@@ -1,28 +1,35 @@
 {
     "version": 2,
-    "builds": [
-      {
-        "src": "./server.js",
-        "use": "@vercel/node"
-      }
-    ],
     "redirects": [
         {
+          "source": "/",
+          "destination": "./server.js"
+        },
+        {
           "source": "/reviews",
-          "destination": "/"
+          "destination": "./server.js"
         }
       ],
     "rewrites": [
         {
+          "source": "/",
+          "destination": "./server.js"
+        },
+        {
           "source": "/reviews",
-          "destination": "/"
+          "destination": "./server.js"
         }
       ],
     "routes": [
       {
-        "src": "/(.*)",
-        "dest": "/",
-        "methods":["GET","POST","PUT","PATCH","DELETE","OPTIONS"]
+        "src": "/",
+        "dest": "./server.js",
+        "methods":["GET"]
+      },
+      {
+        "src": "/reviews",
+        "dest": "./server.js",
+        "methods":["GET"]
       }
     ]
 }
