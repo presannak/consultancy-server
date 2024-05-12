@@ -2,14 +2,8 @@
   "version": 2,
   "routes": [
     {
-      "src": "/",
-      "dest": "/",
-      "methods": ["GET"]
-    },
-    {
-      "src": "/reviews",
-      "dest": "/",
-      "methods": ["GET"]
+      "src": "/(.*)",
+      "dest": "server.js"
     }
   ]
 }
