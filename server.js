@@ -6,31 +6,30 @@ const { Pool } = require('pg');
 const cors = require('cors');
 
 const app = express();
-// const PORT = process.env.PORT || 3001;
+const PORT = 3001;
 
 app.use(bodyParser.json());
-app.use(cors({
-  credentials:true,
-  origin:"*"
-}))
+app.use(cors())
 
 app.use((req,res,next)=>{
     res.setHeader("Access-Control-Allow-Origin","*")
     next()
 })
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'earthmovers',
-  password: 'presanna07',
-  port: 5432,
-});
-
 app.get('/test',(req,res,next)=>{
   res.status(200),json({
     message:"hello from api"
   })
 })
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+const pool = new Pool({
+  user: 'presanna',
+  host: 'my-db.c7k2a4260dch.ap-south-1.rds.amazonaws.com',
+  database: 'initial_db',
+  password: 'rajdeepak',
+  port: 5432,
+  ssl:true
+})
+
 
 app.post('/submit-form', async (req, res) => {
   try {
@@ -81,4 +80,6 @@ app.get('/reviews', async (req, res) => {
   }
 });
 
-module.exports=app;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
