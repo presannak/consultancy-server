@@ -37,7 +37,7 @@ app.post('/submit-form', async (req, res) => {
         const { from_name, user_email, subject, message } = req.body;
 
         const result = await pool.query(
-            'INSERT INTO contact_messages (from_name, user_email, subject, message) VALUES ($1, $2, $3, $4)',
+            'INSERT INTO VALUES ($1, $2, $3, $4)',
             [from_name, user_email, subject, message]
         );
 
