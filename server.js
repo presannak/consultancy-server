@@ -53,7 +53,7 @@ app.post('/submitTestimonial', async (req, res) => {
         const { name, location, text } = req.body;
 
         const result = await pool.query(
-            'INSERT INTO testimonials (name, location, text) VALUES ($1, $2, $3)',
+            'INSERT INTO testimonials  VALUES ($1, $2, $3)',
             [name, location, text]
         );
 
