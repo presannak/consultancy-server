@@ -6,9 +6,8 @@ const cors = require('cors');
 const app = express();
 const PORT = 3001;
 
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-
+app.use(express.json())
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -51,13 +50,19 @@ app.post('/submit-form', async (req, res) => {
 app.post('/submitTestimonial', async (req, res) => {
     try {
         const { name, location, text } = req.body;
-
+        console.log(name,location,text)
         const result = await pool.query(
             'INSERT INTO testimonials  VALUES ($1, $2, $3)',
             [name, location, text]
         );
 
-        res.status(200).json({ message: 'Testimonial data stored successfully' });
+        res.status(200).json(
+            { 
+                message: 'Testimonial data stored successfully' ,
+                name,
+                location,
+                text
+            });
     } catch (error) {
         console.error('Error inserting testimonial data:', error);
         res.status(500).json({ error: 'Internal server error' });
